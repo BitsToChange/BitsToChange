@@ -55,4 +55,4 @@ production:
   database: BitsToChange_production
   pool: 5
   username: BitsToChange
-  password:
+  password: BitsToChange
