@@ -1,6 +1,8 @@
 BitsToChange::Application.routes.draw do
-  get 'home/index'
+  get 'login' , to: 'sessions#new', as: 'login'
   root 'home#index'
+  resource :sessions
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -9,3 +9,8 @@ end
 Then(/^I see "([^"]*)"$/) do |text|
   page.should have_content text
 end
+
+And(/^I am on the home page$/) do
+  uri = URI.parse current_url
+  uri.path.should == '/'
+end
