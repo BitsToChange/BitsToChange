@@ -6,8 +6,6 @@ gem 'rails', '4.0.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
@@ -50,4 +48,5 @@ group :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
