@@ -6,9 +6,14 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:userid] = user.__id__
-      redirect_to root_url, :notice => 'Logged in successfully!'
+      redirect_to root_path, :notice => 'Logged in successfully!'
     else
-      redirect_to login_url, :notice => 'Invalid username and/or password.'
+      redirect_to login_path, :notice => 'Invalid username and/or password.'
     end
+  end
+
+  def destroy
+    reset_session
+    redirect_to root_path
   end
 end

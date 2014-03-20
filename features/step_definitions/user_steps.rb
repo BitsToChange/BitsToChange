@@ -1,5 +1,9 @@
+def create_user
+  User.create!(username: 'Admin', password: 'password', password_confirmation: 'password')
+end
+
 Given(/^a user exists$/) do
-  @user = User.create!(username: 'Admin', password: 'password', password_confirmation: 'password')
+  @user = create_user
 end
 
 Given(/^no users exist$/) do
@@ -11,7 +15,7 @@ When(/^I log in with that user's information$/) do
 end
 
 def go_to_login
-  visit new_sessions_path
+  visit login_path
 end
 
 def login_with(username, password)
@@ -58,4 +62,21 @@ end
 
 And(/^I am on the login page$/) do
   current_url.should match '/login'
+end
+
+Given(/^I am already logged in$/) do
+  @user = create_user
+  login_with @user.username, @user.password
+end
+
+When(/^I log out$/) do
+  log_out
+end
+
+def log_out
+  visit logout_path
+end
+
+Given(/^I am already logged out$/) do
+  log_out
 end
