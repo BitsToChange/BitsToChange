@@ -45,8 +45,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 group :test do
+  gem 'accept_values_for'
   gem 'rspec-rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end

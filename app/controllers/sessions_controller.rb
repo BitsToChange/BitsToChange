@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
-      session[:userid] = user.__id__
+      self.current_user = user
       redirect_to root_path, :notice => 'Logged in successfully!'
     else
       redirect_to login_path, :notice => 'Invalid username and/or password.'

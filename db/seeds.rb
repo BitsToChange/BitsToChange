@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+user = User.where(:username => 'benhamin_harrison').first_or_create
+user.password = 'password'
+
+role = Role.where(:name => 'charity registrar').first_or_create
+
+user.roles.push role
+user.save

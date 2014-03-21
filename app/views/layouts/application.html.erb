@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if session[:userid] %>
-  <p>Welcome Admin!</p>
+<% if signed_in? %>
+  <p>Welcome <%= current_user.username %>!</p>
 <% end %>
 <% if flash[:notice] %>
     <p><%= flash[:notice] %></p>
