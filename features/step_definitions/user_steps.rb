@@ -1,3 +1,5 @@
+# CREATE USER
+
 def create_user
   User.create!(username: 'Admin', password: 'password', password_confirmation: 'password')
 end
@@ -10,9 +12,7 @@ Given(/^no users exist$/) do
   User.destroy_all
 end
 
-When(/^I log in with that user's information$/) do
-  login_with @user.username, @user.password
-end
+# LOGIN
 
 def login_with(username, password)
   go_to_login
@@ -25,26 +25,29 @@ def go_to_login
   visit login_path
 end
 
+def should_be_logged_in
+  page.should have_content 'Welcome Admin!'
+end
+
+def should_not_be_logged_in
+  page.should_not have_content 'Welcome Admin!'
+end
+
+When(/^I log in with that user's information$/) do
+  login_with @user.username, @user.password
+end
+
 Then(/^I am( not)? logged in$/) do |notLoggedIn|
   if notLoggedIn
-    page.should_not have_content 'Welcome Admin!'
+    should_not_be_logged_in
   else
-    page.should have_content 'Welcome Admin!'
+    should_be_logged_in
   end
 end
 
 When(/^I log in with that user's information with a bad password$/) do
   login_with @user.username, @user.password + 'something bad'
 end
-
-Then(/^I am( not)? told that my credentials are bad$/) do |notBadCredentials|
-  if notBadCredentials
-    page.should_not have_content 'Invalid username and/or password.'
-  else
-    page.should have_content 'Invalid username and/or password.'
-  end
-end
-
 
 When(/^I log in with that user's information with a bad username$/) do
   login_with @user.username + 'bad', @user.password
@@ -54,7 +57,6 @@ When(/^I log in with random information$/) do
   #noinspection SpellCheckingInspection
   login_with 'asdfghjkl', 'qwertyuiop'
 end
-
 
 When(/^I go to the login page$/) do
   go_to_login
@@ -69,18 +71,6 @@ Given(/^I am already logged in$/) do
   login_with @user.username, @user.password
 end
 
-When(/^I log out$/) do
-  log_out
-end
-
-def log_out
-  visit logout_path
-end
-
-Given(/^I am already logged out$/) do
-  log_out
-end
-
 def login_with_roles(*roles)
   @user = create_user
   roles.each { |role|
@@ -93,10 +83,79 @@ Given(/^I am already logged in with a charity registrar account$/) do
   login_with_roles 'charity registrar'
 end
 
+Then(/^I am( not)? told that my credentials are bad$/) do |notBadCredentials|
+  if notBadCredentials
+    page.should_not have_content 'Invalid username and/or password.'
+  else
+    page.should have_content 'Invalid username and/or password.'
+  end
+end
+
+# LOGOUT
+
+When(/^I log out$/) do
+  log_out
+end
+
+def log_out
+  visit logout_path
+end
+
+Given(/^I am already logged out$/) do
+  log_out
+end
+
 Then(/^I am( not)? told I do not have permission to do that$/) do |notTold|
   if notTold
     page.should_not have_content 'You do not have permission to do that.'
   else
     page.should have_content 'You do not have permission to do that.'
   end
+end
+
+# CHANGE PASSWORD
+
+def change_password(options = {})
+  @newPassword = options[:new_password] || @user.password + 'something'
+  visit change_password_path
+  fill_in 'Old', :with => options[:old_password] || @user.password
+  fill_in 'New', :with => @newPassword
+  fill_in 'Confirm', :with => options[:confirm_password] || @newPassword
+  click_button 'Change'
+end
+
+When(/^I change my password$/) do
+  change_password
+end
+
+Then(/^I can log in with my new password$/) do
+  log_out
+  login_with @user.username, @newPassword
+  should_be_logged_in
+end
+
+And(/^I cannot log in with my old password$/) do
+  log_out
+  login_with @user.username, @user.password
+  should_not_be_logged_in
+end
+
+When(/^I change my password but mess up the new password confirmation$/) do
+  change_password :confirm_password => 'Something different'
+end
+
+Then(/^I am told my confirmation was incorrect$/) do
+  page.should have_content 'Incorrect password confirmation.'
+end
+
+When(/^I change my password but mess up the old password$/) do
+  change_password :old_password => @user.password + 'something else'
+end
+
+Then(/^I am told my old password was incorrect$/) do
+  page.should have_content 'Incorrect old password.'
+end
+
+When(/^I go to change my password$/) do
+  visit change_password_path
 end

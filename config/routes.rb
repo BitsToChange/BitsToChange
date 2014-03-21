@@ -1,9 +1,11 @@
 BitsToChange::Application.routes.draw do
-  resources :charities
-
+  get 'changePassword', to: 'password#edit', as: 'change_password'
+  put 'changePassword', to: 'password#update'
   get 'login' , to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   root 'home#index'
+
+  resources :charities
   resource :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
