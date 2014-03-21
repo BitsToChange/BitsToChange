@@ -51,3 +51,5 @@ group :test do
   gem 'database_cleaner'
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
+
+gem 'rails_12factor', group: :production
