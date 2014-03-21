@@ -11,7 +11,7 @@
   <p>Welcome <%= current_user.username %>!</p>
 <% end %>
 <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
+    <p id="notice"><%= flash[:notice] %></p>
 <% end %>
 
 <%= yield %>
