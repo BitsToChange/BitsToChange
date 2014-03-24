@@ -1,3 +1,87 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.promo-wrapper {
+  background: -webkit-linear-gradient($secondary-color, darken($secondary-color, 5%));
+  background: linear-gradient($secondary-color, darken($secondary-color, 5%));
+  height: 400px;
+  padding-top: 20px;
+
+  @media #{$medium-up} {
+    padding-top: 70px;
+    height: 650px;
+  }
+}
+
+.promo {
+  @include grid-row();
+}
+
+.hero {
+  @include grid-column(12);
+
+  .logo {
+    margin-bottom: 10px;
+    @media #{$medium-up} {
+      margin-bottom: 20px;
+    }
+  }
+
+  .slogan {
+    margin-bottom: 20px;
+    font-style: italic;
+    text-align: right;
+    @media #{$medium-up} {
+      margin-bottom: 65px;
+      font-size: $base-font-size * 1.8;
+      text-align: center;
+    }
+  }
+  
+  .mailing-list {
+    @include panel($background-color-dark);
+
+    @include grid-column(12, $center: true);
+    @media #{$medium-up} {
+      @include grid-column(8, $center: true);
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    p {
+      text-align: center;
+      font-size: $base-font-size * .80;
+    }
+
+    form {
+      @include grid-row();
+
+      input[type="text"] {
+        @include grid-column(12);
+      }
+      button {
+        @include grid-column(12);
+      }
+
+      @media #{$medium-up} {
+        input[type="text"] {
+          @include grid-column(8);
+        }
+        button {
+          .mobile {
+            display: none;
+          }
+          @include grid-column(4);
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $background-color-dark;
+  text-align: center;
+  .contact {
+    @include grid-column(12);
+    p {
+      margin-bottom: 5px;
+    }
+  }
+}

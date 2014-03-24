@@ -6,19 +6,24 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Bits to Change" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "application" %>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <header>
     <% if signed_in? %>
       <p class="welcome">Welcome <%= current_user.username %>!</p>
     <% end %>
+  </header>
+
+  <body>
     <% if flash[:notice] %>
       <p class="notice"><%= flash[:notice] %></p>
     <% end %>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
+
 </html>

@@ -1,16 +1,18 @@
 @import "foundation_and_overrides";
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require foundation_and_overrides
 
- *= require_tree .
- */
+$primary-color: #f6921e;
+$secondary-color: #1a719c;
+$background-color: #e7e7e7;
+$background-color-dark: #024a68;
+
+@import "home.css.scss";
+
+body {
+  background: $background-color-dark;
+  font-family: "Ubuntu" sans-serif;
+  color: #ddd;
+}
+
+// button {
+//   background-color: $primary-color;
+// }
