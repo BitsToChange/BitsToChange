@@ -1,6 +1,9 @@
 .promo-wrapper {
+  background: $secondary-color;
+  background: -mozilla-linear-gradient($secondary-color, darken($secondary-color, 5%));
   background: -webkit-linear-gradient($secondary-color, darken($secondary-color, 5%));
   background: linear-gradient($secondary-color, darken($secondary-color, 5%));
+
   height: 400px;
   padding-top: 20px;
 

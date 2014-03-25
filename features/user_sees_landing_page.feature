@@ -5,5 +5,5 @@ Feature: user sees landing page
 
   Scenario: it's the only one
     When I go to the root page
-    Then I see "Bits to Change"
-    And I see the title as "Bits to Change"
+    Then I see the title as "Bits to Change"
+    And I see "Giving the change to those that make the change."
