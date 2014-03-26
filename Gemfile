@@ -55,3 +55,5 @@ end
 gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
+
+gem 'analytics-ruby', '~>1.0'
