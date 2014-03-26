@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe User do
+  describe 'validations' do
+    describe 'email' do
+      it { should_not accept_values_for(:email, nil)}
+      it { should_not accept_values_for(:email, '')}
+      it { should_not accept_values_for(:email, 'something')}
+      it { should_not accept_values_for(:email, 'something@something')}
+      it { should_not accept_values_for(:email, '@something.com')}
+      it { should_not accept_values_for(:email, 'someone.com')}
+      it { should_not accept_values_for(:email, 'someone@.com')}
+      it { should_not accept_values_for(:email, 'someone@something.')}
+
+      it { should accept_values_for(:email, 'something@something.com')}
+      it { should accept_values_for(:email, 'some.thing@something.com')}
+      it { should accept_values_for(:email, 'something@some.thing.com')}
+      it { should accept_values_for(:email, 'some.thing@some.thing.com')}
+      it { should accept_values_for(:email, 'some.thing@some.thing')}
+    end
+  end
   describe '#has_role?' do
     context 'with no roles' do
       before { subject.roles = [] }

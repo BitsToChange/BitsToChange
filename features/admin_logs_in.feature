@@ -17,9 +17,9 @@ Feature: admin logs in
     And I am not logged in
     And I am on the login page
 
-  Scenario: bad username
+  Scenario: bad email
     Given a user exists
-    When I log in with that user's information with a bad username
+    When I log in with that user's information with a bad email
     Then I am told that my credentials are bad
     And I am not logged in
     And I am on the login page

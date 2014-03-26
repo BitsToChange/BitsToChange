@@ -1,7 +1,7 @@
 # CREATE USER
 
 def create_user
-  User.create!(username: 'Admin', password: 'password', password_confirmation: 'password')
+  User.create!(email: 'admin@email.com', password: 'password', password_confirmation: 'password')
 end
 
 Given(/^a user exists$/) do
@@ -14,9 +14,9 @@ end
 
 # LOGIN
 
-def login_with(username, password)
+def login_with(email, password)
   go_to_login
-  fill_in 'Username', :with => username
+  fill_in 'Email', :with => email
   fill_in 'Password', :with => password
   click_button 'Log In'
 end
@@ -26,15 +26,15 @@ def go_to_login
 end
 
 def should_be_logged_in
-  page.should have_content 'Welcome Admin!'
+  page.should have_content "Welcome #{@user.email}!"
 end
 
 def should_not_be_logged_in
-  page.should_not have_content 'Welcome Admin!'
+  page.should_not have_content "Welcome"
 end
 
 When(/^I log in with that user's information$/) do
-  login_with @user.username, @user.password
+  login_with @user.email, @user.password
 end
 
 Then(/^I am( not)? logged in$/) do |notLoggedIn|
@@ -46,11 +46,11 @@ Then(/^I am( not)? logged in$/) do |notLoggedIn|
 end
 
 When(/^I log in with that user's information with a bad password$/) do
-  login_with @user.username, @user.password + 'something bad'
+  login_with @user.email, @user.password + 'something bad'
 end
 
-When(/^I log in with that user's information with a bad username$/) do
-  login_with @user.username + 'bad', @user.password
+When(/^I log in with that user's information with a bad email$/) do
+  login_with @user.email + 'bad', @user.password
 end
 
 When(/^I log in with random information$/) do
@@ -68,7 +68,7 @@ end
 
 Given(/^I am already logged in$/) do
   @user = create_user
-  login_with @user.username, @user.password
+  login_with @user.email, @user.password
 end
 
 def login_with_roles(*roles)
@@ -76,7 +76,7 @@ def login_with_roles(*roles)
   roles.each { |role|
     @user.roles.create!(name: role)
   }
-  login_with @user.username, @user.password
+  login_with @user.email, @user.password
 end
 
 Given(/^I am already logged in with a charity registrar account$/) do
@@ -85,9 +85,9 @@ end
 
 Then(/^I am( not)? told that my credentials are bad$/) do |notBadCredentials|
   if notBadCredentials
-    page.should_not have_content 'Invalid username and/or password.'
+    page.should_not have_content 'Invalid email and/or password.'
   else
-    page.should have_content 'Invalid username and/or password.'
+    page.should have_content 'Invalid email and/or password.'
   end
 end
 
@@ -130,13 +130,13 @@ end
 
 Then(/^I can log in with my new password$/) do
   log_out
-  login_with @user.username, @newPassword
+  login_with @user.email, @newPassword
   should_be_logged_in
 end
 
 And(/^I cannot log in with my old password$/) do
   log_out
-  login_with @user.username, @user.password
+  login_with @user.email, @user.password
   should_not_be_logged_in
 end
 
