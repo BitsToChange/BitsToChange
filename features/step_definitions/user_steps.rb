@@ -6,6 +6,7 @@ end
 
 Given(/^a user exists$/) do
   @user = create_user
+  @email = @user.email
 end
 
 Given(/^no users exist$/) do
@@ -158,4 +159,21 @@ end
 
 When(/^I go to change my password$/) do
   visit change_password_path
+end
+
+Then(/^I have an account$/) do
+  @user = User.find_by_email(@email)
+  @user.should_not be_nil
+end
+
+# SIGNUP
+
+Then(/^Segment.io is notified someone signed up$/) do
+  firstIdentification = Analytics.identifications.first
+  firstIdentification[:user_id].should == @user.id
+  firstIdentification[:traits][:email].should == @email
+end
+
+And(/^Segment.io is not notified someone signed up$/) do
+  Analytics.identifications.should be_empty
 end

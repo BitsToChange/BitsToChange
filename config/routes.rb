@@ -5,6 +5,7 @@ BitsToChange::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   root 'home#index'
 
+  resources :users
   resources :charities
   resource :sessions
 
