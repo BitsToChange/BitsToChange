@@ -168,12 +168,9 @@ end
 
 # SIGNUP
 
-Then(/^Segment.io is notified someone signed up$/) do
+Then(/^I am identified through Segment.io$/) do
   firstIdentification = Analytics.identifications.first
   firstIdentification[:user_id].should == @user.id
   firstIdentification[:traits][:email].should == @email
-end
-
-And(/^Segment.io is not notified someone signed up$/) do
-  Analytics.identifications.should be_empty
+  firstIdentification[:traits][:created_at].should == @user.created_at
 end
