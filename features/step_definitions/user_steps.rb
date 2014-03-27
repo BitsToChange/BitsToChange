@@ -169,8 +169,9 @@ end
 # SIGNUP
 
 Then(/^I am identified through Segment.io$/) do
-  firstIdentification = Analytics.identifications.first
-  firstIdentification[:user_id].should == @user.id
-  firstIdentification[:traits][:email].should == @email
-  firstIdentification[:traits][:created_at].should == @user.created_at
+  first_identification = Analytics.identifications.first
+  first_identification[:user_id].should == @user.id
+  first_identification[:traits][:email].should == @email
+  # Convert to integers because Codeship fails if it is just dates
+  first_identification[:traits][:created_at].to_i.should == @user.created_at.to_i
 end
