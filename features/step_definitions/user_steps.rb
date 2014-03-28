@@ -80,8 +80,8 @@ def login_with_roles(*roles)
   login_with @user.email, @user.password
 end
 
-Given(/^I am already logged in with a charity registrar account$/) do
-  login_with_roles 'charity registrar'
+Given(/^I am already logged in with a ([\w+, ]*[\w+]) account$/) do |roles|
+  login_with_roles roles
 end
 
 Then(/^I am( not)? told that my credentials are bad$/) do |notBadCredentials|

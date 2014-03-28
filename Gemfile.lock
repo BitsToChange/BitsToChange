@@ -34,6 +34,7 @@ GEM
     bcrypt (3.1.7)
     bcrypt (3.1.7-x86-mingw32)
     builder (3.1.4)
+    cancan (1.6.10)
     capybara (2.2.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -181,6 +182,7 @@ DEPENDENCIES
   accept_values_for
   analytics-ruby (~> 1.0)
   bcrypt (~> 3.1.7)
+  cancan
   coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner

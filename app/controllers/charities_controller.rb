@@ -1,6 +1,7 @@
 class CharitiesController < ApplicationController
-  before_action :set_charity, only: [:show, :edit, :update, :destroy]
-  before_action :check_permissions, only: [:new, :edit, :create, :update, :destroy]
+  before_action :new_charity, only: [:create]
+
+  load_and_authorize_resource
 
   # GET /charities
   # GET /charities.json
@@ -62,22 +63,17 @@ class CharitiesController < ApplicationController
     end
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render 'not_found'
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_charity
-      @charity = Charity.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render 'not_found'
+    def new_charity
+      @charity = Charity.new
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def charity_params
       params.require(:charity).permit(:name, :description, :website)
-    end
-
-    def check_permissions
-      unless signed_in? and current_user.has_role? 'charity registrar'
-        redirect_to charities_path, :notice => 'You do not have permission to do that.'
-      end
     end
 end
