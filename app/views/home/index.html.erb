@@ -2,12 +2,13 @@
   <div class="promo">
     <div class="hero">
       <div class="logo">
-        <%= image_tag 'full-logo.png', :alt => 'Bits to Change' %>
+        <h1>Bits to Change</h1>
+        <%= image_tag 'full-logo-large.png', :alt => 'Bits to Change' %>
       </div>
       <p class="slogan">Giving the change to those that make the change.</p>
       <div class="mailing-list">
         <%= form_tag users_path do %>
-          <%= text_field_tag :mailing_email, nil, :placeholder => 'help-the-world@example.com' %>
+          <%= text_field_tag :mailing_email, nil, :placeholder => 'help-the-world@example.com', :type => 'email' %>
           <%= button_tag 'Stay in the loop', :class => 'button postfix' %>
         <% end %>
         <p>Sign up to get emails about our progress</p>
