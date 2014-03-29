@@ -13,5 +13,16 @@
   <%= link_to @charity.website, @charity.website %>
 </p>
 
+<% if @charity.wallets.last %>
+  <% public_key = @charity.wallets.last.public_key %>
+  <p>
+    Donate:
+    <a href="bitcoin:<%= public_key %>">
+      <%= public_key %>
+    </a>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_charity_path(@charity) %> |
 <%= link_to 'Back', charities_path %>
+<%= button_to 'Generate Wallet', [:generate_wallet, @charity] %>

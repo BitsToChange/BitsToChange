@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326184604) do
+ActiveRecord::Schema.define(version: 20140329201838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20140326184604) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+  end
+
+  create_table "wallets", force: true do |t|
+    t.string   "public_key"
+    t.integer  "walletable_id"
+    t.string   "walletable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

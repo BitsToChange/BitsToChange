@@ -60,3 +60,5 @@ gem 'foundation-rails'
 gem 'analytics-ruby', '~>1.0'
 
 gem 'cancan'
+
+gem 'money-tree'

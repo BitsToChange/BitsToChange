@@ -63,6 +63,16 @@ class CharitiesController < ApplicationController
     end
   end
 
+  def generate_wallet
+    if @charity.wallets.length == 0
+      wallet = WalletGenerator.new.wallet_for_charity @charity
+      @charity.wallets << wallet
+    else
+      flash[:error] = 'That charity already has a wallet.'
+    end
+    redirect_to charity_path @charity
+  end
+
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render 'not_found'
   end

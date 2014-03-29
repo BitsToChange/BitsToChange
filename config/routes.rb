@@ -6,7 +6,14 @@ BitsToChange::Application.routes.draw do
   root 'home#index'
 
   resources :users
-  resources :charities
+
+  resources :charities do
+    member do
+      post :generate_wallet
+      get :generate_wallet
+    end
+  end
+
   resource :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
