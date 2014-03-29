@@ -27,8 +27,10 @@
 
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
+$include-html-classes: false;
 // $include-print-styles: true;
 // $include-html-global-classes: $include-html-classes;
+$include-html-global-classes: true;
 
 // Grid
 
@@ -41,8 +43,10 @@
 
 // We use these to control various global styles
 // $body-bg: #fff;
+$body-bg: $background-color-dark;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Ubuntu", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -315,6 +319,7 @@
 //
 
 // $include-html-button-classes: $include-html-classes;
+$include-html-button-classes: true;
 
 // We use these to build padding for buttons.
 // $button-tny: rem-calc(10);
@@ -475,6 +480,7 @@
 // Forms
 
 // $include-html-form-classes: $include-html-classes;
+$include-html-form-classes: true;
 
 // We use this to set the base for lots of form spacing and positioning styles
 // $form-spacing: rem-calc(16);
