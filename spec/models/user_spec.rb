@@ -19,7 +19,8 @@ describe User do
       it { should accept_values_for(:email, 'some.thing@some.thing')}
 
       it do
-        User.create!(email: 'something@somewhere.com', password: 'something', password_confirmation: 'something')
+        create :user
+        #User.create!(email: 'something@somewhere.com', password: 'something', password_confirmation: 'something')
         should validate_uniqueness_of(:email)
       end
     end

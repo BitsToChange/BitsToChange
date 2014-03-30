@@ -51,6 +51,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'factory_girl_rails'
 end
 
 gem 'rails_12factor', group: :production

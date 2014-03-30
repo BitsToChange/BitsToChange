@@ -1,7 +1,7 @@
 # CREATE USER
 
 def create_user
-  User.create!(email: 'admin@email.com', password: 'password', password_confirmation: 'password')
+  create(:user)
 end
 
 Given(/^a user exists$/) do
@@ -75,7 +75,7 @@ end
 def login_with_roles(*roles)
   @user = create_user
   roles.each { |role|
-    @user.roles.create!(name: role)
+    @user.roles << create(:role, name: role)
   }
   login_with @user.email, @user.password
 end

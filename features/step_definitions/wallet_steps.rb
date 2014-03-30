@@ -17,7 +17,7 @@ When(/^I try to generate a wallet for that charity$/) do
 end
 
 And(/^that charity already has a wallet$/) do
-  @charity.wallets << Wallet.create!
+  @charity.wallets << create(:wallet)
 end
 
 Then(/^I am told that charity already has a wallet$/) do

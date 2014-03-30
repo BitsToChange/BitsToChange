@@ -31,9 +31,8 @@ Then(/^I am told there are no charities$/) do
 end
 
 Given(/^(\d+) charities exist$/) do |number|
-  @charities = []
-  number.to_i.times do
-    @charities << Charity.create(name: "Charity#{number}", description: "Charity #{number} is awesome!")
+  @charities = (0..number.to_i).map.inject([]) do |list, number|
+    list << create(:charity)
   end
 end
 
@@ -44,7 +43,7 @@ Then(/^I see the charities$/) do
 end
 
 Given(/^a charity exists$/) do
-  @charity = Charity.create!(name: 'Charity', description: 'Charity is awesome!', website: 'somewhere.com')
+  @charity = create :charity
 end
 
 When(/^I go to that charity's page$/) do
