@@ -11,6 +11,10 @@ FactoryGirl.define do
     website 'http://bobstackle.com'
   end
 
+  factory :invalid_charity, parent: :charity do |f|
+    f.name ''
+  end
+
   factory :wallet do
   end
 

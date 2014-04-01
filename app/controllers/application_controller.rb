@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    # Put as error
     flash[:error] = 'You do not have permission to do that.'
     redirect_to root_path
   end

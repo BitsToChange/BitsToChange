@@ -1,30 +1,24 @@
 class CharitiesController < ApplicationController
   before_action :new_charity, only: [:create]
 
+  attr_accessor :wallet_generator
+
   load_and_authorize_resource
 
-  # GET /charities
-  # GET /charities.json
   def index
     @charities = Charity.all
   end
 
-  # GET /charities/1
-  # GET /charities/1.json
   def show
   end
 
-  # GET /charities/new
   def new
     @charity = Charity.new
   end
 
-  # GET /charities/1/edit
   def edit
   end
 
-  # POST /charities
-  # POST /charities.json
   def create
     @charity = Charity.new(charity_params)
 
@@ -65,12 +59,16 @@ class CharitiesController < ApplicationController
 
   def generate_wallet
     if @charity.wallets.length == 0
-      wallet = WalletGenerator.new.wallet_for_charity @charity
+      wallet = wallet_generator.wallet_for_charity @charity
       @charity.wallets << wallet
     else
       flash[:error] = 'That charity already has a wallet.'
     end
     redirect_to charity_path @charity
+  end
+
+  def wallet_generator
+    @wallet_generator ||= WalletGenerator.new
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|

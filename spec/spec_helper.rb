@@ -41,4 +41,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include FactoryGirl::Syntax::Methods
+
+  config.alias_it_should_behave_like_to :it_has_behavior, 'has behavior'
 end
