@@ -1,99 +1,50 @@
-.promo-wrapper {
-  background: $secondary-color;
-  background: -mozilla-linear-gradient($secondary-color, darken($secondary-color, 5%));
-  background: -webkit-linear-gradient($secondary-color, darken($secondary-color, 5%));
-  background: linear-gradient($secondary-color, darken($secondary-color, 5%));
-
-  min-height: 400px;
-  padding-top: 20px;
-
-  @media #{$medium-up} {
-    padding-top: 70px;
-    min-height: 650px;
-  }
-}
-
-.promo {
-  @include grid-row();
-}
-
-.hero {
+.wrapper section.home {
   @include grid-column(12);
 
-  .logo {
-    text-indent: -2000px;
-    width: 100%;
-    margin-bottom: 10px;
-    @media #{$medium-up} {
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      height: 0;
-      border: 0;
-      padding: 0;
-      margin: 0;
-    }
+  h1 {
+    text-indent: -10000px;
+    height: 0;
+    padding: 0;
+    margin: 0;
   }
 
-  .slogan {
-    margin-bottom: 20px;
-    font-style: italic;
-    text-align: right;
-    @media #{$medium-up} {
-      margin-bottom: 65px;
-      font-size: $base-font-size * 1.8;
-      text-align: center;
-    }
+  img.logo {
+    margin-top: 15px;
   }
-  
-  .mailing-list {
-    @include panel($background-color-dark);
 
-    @include grid-column(12, $center: true);
-    @media #{$medium-up} {
-      @include grid-column(8, $center: true);
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
+  aside.slogan {
     p {
-      text-align: center;
-      font-size: $base-font-size * .80;
-    }
-
-    form {
-      @include grid-row();
-
-      input#mailing_email {
-        @include grid-column(12);
-      }
-      button {
-        @include grid-column(12);
-      }
+      text-align: right;
+      font-style: italic;
+      margin-bottom: 5px;
 
       @media #{$medium-up} {
-        input#mailing_email {
-          @include grid-column(8);
-        }
-        button {
-          .mobile {
-            display: none;
-          }
-          @include grid-column(4);
-        }
+        text-align: center;
+        font-size: $base-font-size * 1.5;
+        margin-bottom: 1.25rem;
       }
     }
   }
-}
 
-footer {
-  background-color: $background-color-dark;
-  text-align: center;
-  .contact {
-    @include grid-column(12);
+  aside.mailing-list {
+    @include panel();
+
     p {
-      margin-bottom: 5px;
+      text-align: center;
+      font-size: $base-font-size * .8;
+    }
+
+    @media #{$medium-up} {
+      @include grid-column(9, $center: true);
+      input {
+        @include grid-column(9);
+      }
+
+      button {
+        @include prefix-postfix-base();
+        @include postfix($primary-color);
+        @include grid-column(3);
+      }
     }
   }
 }

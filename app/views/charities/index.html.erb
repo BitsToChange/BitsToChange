@@ -1,43 +1,32 @@
-<h1>Listing charities</h1>
-
-<% if @charities.length > 0 %>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Website</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @charities.each do |charity| %>
-        <tr>
-          <td><%= charity.name %></td>
-          <td><%= charity.description %></td>
-          <td><%= charity.website %></td>
-          <td><%= link_to 'Show', charity %></td>
-          <% if can? :edit, charity %>
-            <td><%= link_to 'Edit', edit_charity_path(charity) %></td>
-          <% end %>
-          <% if can? :destroy, charity %>
-            <td><%= link_to 'Destroy', charity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% else %>
-
-  <p>We don't have any charities yet.</p>
-
-<% end %>
+<section>
+  <h1>List of Charities</h1>
+  <% if @charities.length > 0 %>
+    <ul>
+    <% @charities.each do |charity| %>
+      <li>
+        <article>
+          <h1><%= link_to charity.name, charity %></h1>
+          <p><%= charity.description %></p>
+          <a href="<%= charity.website %>"><%= charity.website %></a>
+          <nav>
+            <% if can? :edit, charity %>
+              <%= link_to 'Edit', edit_charity_path(charity) %>
+            <% end %>
+            <% if can? :destroy, charity %>
+              <%= link_to 'Destroy', charity, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </nav>
+        </article>
+      </li>
+    <% end %>
+    </ul>
+  <% else %>
+    We don't have any charities yet.
+  <% end %>
+</section>
 
 <% if can? :create, Charity %>
-  <%= link_to 'New Charity', new_charity_path %>
+  <nav>
+    <%= link_to 'New Charity', new_charity_path %>
+  </nav>
 <% end %>

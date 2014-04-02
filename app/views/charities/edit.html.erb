@@ -1,6 +1,9 @@
-<h1>Editing charity</h1>
+<section>
+  <h1>Edit Charity</h1>
+  <%= render 'form' %>
+</section>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @charity %> |
-<%= link_to 'Back', charities_path %>
+<nav>
+  <%= link_to 'Show', @charity %> |
+  <%= link_to 'Back', charities_path %>
+</nav>

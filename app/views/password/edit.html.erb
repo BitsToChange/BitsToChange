@@ -1,16 +1,20 @@
-<h1>Change Password</h1>
-<%= form_tag change_password_path, method: :put do %>
-  <p>
-    <%= label_tag :old_password %>
-    <%= password_field_tag :old_password, params[:old_password] %>
-  </p>
-  <p>
-    <%= label_tag :new_password %>
-    <%= password_field_tag :new_password, params[:new_password] %>
-  </p>
-  <p>
-    <%= label_tag :confirm_password %>
-    <%= password_field_tag :confirm_password, params[:confirm_password] %>
-  </p>
-  <p class="button"><%= button_tag 'Change Password' %></p>
-<% end %>
+<section>
+  <h1>Change Password</h1>
+  <%= form_tag change_password_path, method: :put do %>
+    <fieldset>
+      <div class="field">
+        <%= label_tag :old_password %>
+        <%= password_field_tag :old_password, params[:old_password] %>
+      </div>
+      <div class="field">
+        <%= label_tag :new_password %>
+        <%= password_field_tag :new_password, params[:new_password] %>
+      </div>
+      <div class="field">
+        <%= label_tag :confirm_password %>
+        <%= password_field_tag :confirm_password, params[:confirm_password] %>
+      </div>
+    </fieldset>
+    <%= button_tag 'Change Password' %>
+  <% end %>
+</section>

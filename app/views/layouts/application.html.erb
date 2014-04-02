@@ -22,34 +22,46 @@
     <meta name="msapplication-TileColor" content="#68bed1">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag 'application' %>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
     <%= javascript_tag do %>
       window.analytics||(window.analytics=[]),window.analytics.methods=["identify","track","trackLink","trackForm","trackClick","trackSubmit","page","pageview","ab","alias","ready","group","on","once","off"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var method=window.analytics.methods[i];window.analytics[method]=window.analytics.factory(method)}window.analytics.load=function(t){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)},window.analytics.SNIPPET_VERSION="2.0.8",
-      window.analytics.load("<%= ENV["SEGMENTIO_WRITE_KEY"] %>");
+      window.analytics.load("<%= ENV['SEGMENTIO_WRITE_KEY'] %>");
       window.analytics.page();
     <% end %>
   </head>
 
-  <header>
-    <% if signed_in? %>
-      <p class="welcome">Welcome <%= current_user.email %>!</p>
-    <% end %>
-  </header>
-
   <body>
-    <% if flash[:error] %>
-      <p class="error"><%= flash[:error] %></p>
-    <% end %>
-    <% if flash[:notice] %>
-      <p class="notice"><%= flash[:notice] %></p>
-    <% end %>
+    <section>
+      <div class="wrapper">
+        <% if signed_in? %>
+          <aside>
+            <p class="welcome">Welcome <%= current_user.email %>!</p>
+          </aside>
+        <% end %>
 
-    <%= yield %>
+        <% if flash[:error] %>
+          <section>
+            <p class="error"><%= flash[:error] %></p>
+          </section>
+        <% end %>
+        <% if flash[:notice] %>
+          <section>
+            <p class="notice"><%= flash[:notice] %></p>
+          </section>
+        <% end %>
 
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application" %>
+        <%= yield %>
+      </div>
+    </section>
+
+    <footer>
+      <p>technical@bitstochange.org</p>
+      <p>All Rights Reserved &copy; 2014, BitsToChange, LLC</p>
+    </footer>
+
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application' %>
   </body>
-
 </html>

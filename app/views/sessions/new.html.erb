@@ -1,13 +1,16 @@
-<h1>Log In</h1>
-
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %>
-    <%= password_field_tag :password, params[:password] %>
-  </p>
-  <p class="button"><%= button_tag 'Log In' %></p>
-<% end %>
+<section>
+  <h1>Log In</h1>
+  <%= form_tag sessions_path do %>
+    <fieldset>
+      <div class="field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+      <div class="field">
+        <%= label_tag :password %>
+        <%= password_field_tag :password, params[:password] %>
+      </div>
+    </fieldset>
+    <%= button_tag 'Log In' %>
+  <% end %>
+</section>

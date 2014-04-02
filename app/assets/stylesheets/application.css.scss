@@ -1,13 +1,15 @@
-$background-color: #e7e7e7;
-$background-color-dark: #024a68;
-
 @import "foundation_and_overrides";
 
-$primary-color: #f6921e;
-$secondary-color: #1a719c;
+.wrapper {
+  @include grid-row();
+}
 
-@import "home.css.scss";
+@import "home";
 
-body {
-  color: #ddd;
+footer {
+  text-align: center;
+
+  p {
+    margin-bottom: .25rem;
+  }
 }

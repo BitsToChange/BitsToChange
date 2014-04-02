@@ -1,25 +1,14 @@
-<div class="promo-wrapper">
-  <div class="promo">
-    <div class="hero">
-      <div class="logo">
-        <h1>Bits to Change</h1>
-        <%= image_tag 'full-logo-large.png', :alt => 'Bits to Change' %>
-      </div>
-      <p class="slogan">Giving the change to those that make the change.</p>
-      <div class="mailing-list">
-        <%= form_tag users_path do %>
-          <%= text_field_tag :mailing_email, nil, :placeholder => 'help-the-world@example.com', :type => 'email' %>
-          <%= button_tag 'Stay in the loop', :class => 'button postfix' %>
-        <% end %>
-        <p>Sign up to get emails about our progress</p>
-      </div>
-    </div>
-  </div>
-</div>
-<footer>
-  <div class="row">
-    <div class="contact">
-      <p>technical@bitstochange.org | All Rights Reserved &copy; 2014, BitsToChange, LLC</p>
-    </div>
-  </div>
-</footer>
+<section class="home">
+  <h1>Bits to Change</h1>
+  <%= image_tag 'full-logo-large.png', :alt => 'Bits to Change', :class => 'logo' %>
+  <aside class="slogan">
+    <p>Giving the change to those that make the change.</p>
+  </aside>
+  <aside class="mailing-list">
+    <%= form_tag users_path do %>
+      <%= text_field_tag :mailing_email, nil, :placeholder => 'help-the-world@example.com', :type => 'email' %>
+      <%= button_tag 'Stay in the loop', :class => 'button postfix' %>
+    <% end %>
+    <p>Sign up to get emails about our progress</p>
+  </aside>
+</section>

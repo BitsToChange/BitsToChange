@@ -1,30 +1,23 @@
-<p>
-  <strong>Name:</strong>
-  <%= @charity.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @charity.description %>
-</p>
-
-<p>
-  <strong>Website:</strong>
+<article>
+  <h1><%= @charity.name %></h1>
+  <p><%= @charity.description %></p>
   <%= link_to @charity.website, @charity.website %>
-</p>
+</article>
 
 <% if @charity.wallets.last %>
   <% public_key = @charity.wallets.last.public_key %>
-  <p>
-    Donate:
-    <a href="bitcoin:<%= public_key %>">
-      <%= public_key %>
-    </a>
-  </p>
+  <aside>
+    <h1>Donate</h1>
+    <a href="bitcoin:<%= public_key %>"><%= public_key %></a>
+  </aside>
 <% end %>
 
-<%= link_to 'Edit', edit_charity_path(@charity) %> |
-<%= link_to 'Back', charities_path %>
-<% if can? :generate_wallet, @charity %>
-  <%= button_to 'Generate Wallet', [:generate_wallet, @charity] %>
-<% end %>
+<nav>
+  <% if can? :edit, @charity %>
+    <%= link_to 'Edit', edit_charity_path(@charity) %> |
+  <% end %>
+  <%= link_to 'Back', charities_path %>
+  <% if can? :generate_wallet, @charity %>
+    <%= button_to 'Generate Wallet', [:generate_wallet, @charity] %>
+  <% end %>
+</nav>
