@@ -13,3 +13,7 @@ footer {
     margin-bottom: .25rem;
   }
 }
+
+button, input[type="submit"] {
+  @include button();
+}
