@@ -1,19 +1,49 @@
+$primary-color: #ed4e0c;
+$secondary-color: #f26b1d;
+$tertiary-color: #f28833;
+$quartenary-color: #f3af5a;
+
+$panel-bg: $primary-color;
+$button-bg: $quartenary-color;
+
+$body-bg: #eaebec;
+
 @import "foundation_and_overrides";
 
 .wrapper {
   @include grid-row();
+  background-color: white;
 }
 
 @import "home";
 
 footer {
   text-align: center;
+  background-color: $primary-color;
 
   p {
     margin-bottom: .25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
 button, input[type="submit"] {
-  @include button();
+  @include button($bg: $button-bg);
+}
+
+// Style Placeholders for inputs
+input[type="email"]::-webkit-input-placeholder {
+  color: $quartenary-color;
+}
+input[type="email"]:-moz-placeholder {
+  color: $quartenary-color;
+}
+input[type="email"]::-moz-placeholder {
+  color: $quartenary-color;
+}
+input[type="email"]:-ms-input-placeholder {
+  color: $quartenary-color;
 }

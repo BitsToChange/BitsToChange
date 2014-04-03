@@ -1,7 +1,7 @@
 .wrapper section.home {
   @include grid-column(12);
 
-  h1 {
+  > h1 {
     text-indent: -10000px;
     height: 0;
     padding: 0;
@@ -34,6 +34,14 @@
       font-size: $base-font-size * .8;
     }
 
+    button {
+      background-color: $button-bg;
+
+      &:hover {
+        background-color: darken($button-bg, -$button-function-factor);
+      }
+    }
+
     @media #{$medium-up} {
       @include grid-column(9, $center: true);
       input {
@@ -41,10 +49,85 @@
       }
 
       button {
-        @include prefix-postfix-base();
-        @include postfix($primary-color);
+        @include postfix($button-bg);
         @include grid-column(3);
+
+        &:hover {
+          background-color: darken($button-bg, -$button-function-factor);
+        }
+      }
+    }
+  }
+
+  img.world-topper {
+    width: 100%;
+    height: auto;
+  }
+
+  section#goals {
+    background: $secondary-color;
+    background: linear-gradient($secondary-color, $quartenary-color);
+    margin-top: -5px;
+
+    h1, & { color: white; }
+
+    h1 {
+      text-indent: 15%;
+
+      @media #{$medium-up} {
+        text-indent: 25%;
+        position: relative;
+        top: -50px;
+      }
+    }
+
+    ol {
+      list-style: none;
+      counter-reset: goal-counter;
+
+
+      @media #{$medium-up} {
+        @include grid-column(9, $center: true);
+
+        //Snaps bottom to whatever is below it.
+        margin-bottom: 0;
+      }
+
+      li {
+        padding-left: 40px;
+        padding-right: 10px;
+        padding-bottom: 1rem;
+
+        position: relative;
+
+        &:before {
+          content: counter(goal-counter);
+          counter-increment: goal-counter;
+
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          width: 2.25rem;
+          height: 2.25rem;
+          font-size: 1.5rem;
+          font-weight: bold;
+          text-align: center;
+          vertical-align: middle;
+          color: $primary-color;
+
+          background: white;
+          border-radius: 50%;
+        }
+
+        @media #{$medium-up} {
+          font-size: $base-font-size * 1.5;
+
+          padding-left: 60px;
+          padding-bottom: 1.5rem;
+        }
       }
     }
   }
 }
+
