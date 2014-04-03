@@ -6,4 +6,4 @@ Feature: user sees landing page
   Scenario: it's the only one
     When I go to the root page
     Then I see the title as "Bits to Change"
-    And I see "Giving the change to those that make the change."
+    And I see "Giving the change to those who make the change."
