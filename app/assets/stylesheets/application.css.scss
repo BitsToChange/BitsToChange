@@ -13,6 +13,8 @@ $body-bg: #eaebec;
 .wrapper {
   @include grid-row();
   background-color: white;
+
+  min-height: 100vh;
 }
 
 @import "home";
