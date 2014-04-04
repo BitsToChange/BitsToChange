@@ -22,12 +22,14 @@ $body-bg: #eaebec;
 footer {
   text-align: center;
   background-color: $primary-color;
+  color: white;
+  padding: .5rem 0;
 
   p {
-    margin-bottom: .25rem;
+    display: inline;
 
-    &:last-child {
-      margin-bottom: 0;
+    &:not(:first-child):before {
+      content: "| ";
     }
   }
 }
