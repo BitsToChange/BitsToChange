@@ -9,15 +9,19 @@ $button-bg: $quartenary-color;
 $body-bg: #eaebec;
 
 @import "foundation_and_overrides";
+@import "home";
+
+section#content {
+  @include grid-row();
+}
 
 .wrapper {
-  @include grid-row();
+  @include grid-column(12);
   background-color: white;
 
   min-height: 100vh;
 }
 
-@import "home";
 
 footer {
   text-align: center;
