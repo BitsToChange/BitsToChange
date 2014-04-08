@@ -57,9 +57,11 @@ end
 gem 'rails_12factor', group: :production
 
 gem 'foundation-rails'
+gem 'redcarpet'
 
 gem 'analytics-ruby', '~>1.0'
 
 gem 'cancan'
 
 gem 'money-tree'
+
