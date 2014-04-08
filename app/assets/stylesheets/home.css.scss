@@ -71,10 +71,21 @@
     background: linear-gradient(rgba(0,0,0,0), rgba($quartenary-color, 0.5));
   }
 
-  section#goals {
+  // Wrapper for donate and goals
+  div.goals {
+    // Background gradient
     background: $secondary-color;
     background: linear-gradient($secondary-color, $quartenary-color);
     margin-top: -5px;
+
+    @include grid-row();
+  }
+
+  section#goals {
+
+    @media #{$medium-up} {
+      @include grid-column(8);
+    }
 
     h1, & { color: white; }
 
@@ -91,14 +102,6 @@
     ol {
       list-style: none;
       counter-reset: goal-counter;
-
-
-      @media #{$medium-up} {
-        @include grid-column(9, $center: true);
-
-        //Snaps bottom to whatever is below it.
-        margin-bottom: 0;
-      }
 
       li {
         padding-left: 40px;
@@ -134,6 +137,32 @@
           padding-bottom: 1.5rem;
         }
       }
+    }
+  }
+
+  aside.donate {
+    margin-bottom: 1rem;
+
+    text-align: center;
+
+    @media #{$medium-up} {
+      @include grid-column(4, $last-column: true, $float: right);
+    }
+
+    h1 {
+      color: white;
+      font-size: $base-font-size * 2;
+    }
+
+    img {
+      margin-bottom: .5rem;
+      padding: 5%;
+    }
+
+    a {
+      color: white;
+      word-break: break-all;
+
     }
   }
 }

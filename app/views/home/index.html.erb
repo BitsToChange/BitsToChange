@@ -11,12 +11,21 @@
     <% end %>
     <p>Sign up to get emails about our progress</p>
   </aside>
-  <section id="goals">
-    <h1>Our Goal:</h1>
-    <ol>
-      <li>To empower community driven charities to accept Bitcoin and embrace the future of fundraising with ease.</li>
-      <li>To build a hub for discovering reputable charities, big and small, across all interests and causes.</li>
-      <li>To further Bitcoins as a force for good and lead the way to safer online transactions.</li>
-    </ol>
-  </section>
+  <div class="goals">
+    <section id="goals">
+      <h1>Our Goal:</h1>
+      <ol>
+        <li>To empower community driven charities to accept Bitcoin and embrace the future of fundraising with ease.</li>
+        <li>To build a hub for discovering reputable charities, big and small, across all interests and causes.</li>
+        <li>To further Bitcoins as a force for good and lead the way to safer online transactions.</li>
+      </ol>
+    </section>
+    <aside class="donate">
+      <h1>Want to help us?</h1>
+      <a href="bitcoin:1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa">
+        <%= image_tag 'bitcoin-qr.png', :alt => '1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa', :class => 'donate' %>
+      </a>
+      <a href="bitcoin:1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa">1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa</a>
+    </aside>
+  </div>
 </section>
