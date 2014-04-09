@@ -12,21 +12,21 @@
   }
 }
 
-article.charity {
-  margin-bottom: 1rem;
-}
-
-aside.donate {
-  @include panel();
-
-  text-align: center;
-
-  a {
-    color: white;
-  }
-}
-
 .charity-wrapper {
+  article.charity {
+    margin-bottom: 1rem;
+  }
+
+  aside.donate {
+    @include panel();
+
+    text-align: center;
+
+    a {
+      color: white;
+    }
+  }
+
   nav {
     a {
       @include button($bg: $button-bg);
