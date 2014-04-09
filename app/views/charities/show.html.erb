@@ -1,23 +1,29 @@
-<article>
-  <h1><%= @charity.name %></h1>
-  <%= markdown(@charity.description) %>
-  <%= link_to @charity.website, @charity.website %>
-</article>
+<div class="charity-wrapper">
+  <article class="charity">
+    <h1><%= @charity.name %></h1>
+    <%= markdown(@charity.description) %>
+    <%= link_to @charity.website, @charity.website %>
+  </article>
 
-<% if @charity.wallets.last %>
-  <% public_key = @charity.wallets.last.public_key %>
-  <aside>
-    <h1>Donate</h1>
-    <a href="bitcoin:<%= public_key %>"><%= public_key %></a>
-  </aside>
-<% end %>
+  <div class="actions">
+    <% if @charity.wallets.last %>
+      <% public_key = @charity.wallets.last.public_key %>
+      <aside class="donate">
+        <h1>Donate</h1>
+        <a class="wallet" href="bitcoin:<%= public_key %>"><%= public_key %></a>
+      </aside>
+    <% end %>
 
-<nav>
-  <% if can? :edit, @charity %>
-    <%= link_to 'Edit', edit_charity_path(@charity) %> |
-  <% end %>
-  <%= link_to 'Back', charities_path %>
-  <% if can? :generate_wallet, @charity %>
-    <%= button_to 'Generate Wallet', [:generate_wallet, @charity] %>
-  <% end %>
-</nav>
+    <nav>
+      <ul>
+      <% if can? :edit, @charity %>
+        <li><%= link_to 'Edit', edit_charity_path(@charity), :class => 'edit' %></li>
+      <% end %>
+      <li><%= link_to 'Back', charities_path, :class => 'back' %></li>
+      <% if can? :generate_wallet, @charity %>
+        <li><%= button_to 'Generate Wallet', [:generate_wallet, @charity], :class => 'generate-wallet' %></li>
+      <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>

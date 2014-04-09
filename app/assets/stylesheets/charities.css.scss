@@ -1,0 +1,45 @@
+@media #{$medium-up} {
+  .charity-wrapper {
+    @include grid-row($behavior: nest);
+  }
+
+  article.charity {
+    @include grid-column(8);
+  }
+
+  div.actions {
+    @include grid-column(4);
+  }
+}
+
+article.charity {
+  margin-bottom: 1rem;
+}
+
+aside.donate {
+  @include panel();
+
+  text-align: center;
+
+  a {
+    color: white;
+  }
+}
+
+.charity-wrapper {
+  nav {
+    a {
+      @include button($bg: $button-bg);
+    }
+
+    ul {
+      @include button-group-container();
+
+      & > li {
+        a, input[type="submit"] {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
