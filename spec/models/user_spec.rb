@@ -4,7 +4,7 @@ describe User do
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }
-    describe Constants::Roles::CHARITY_ADMINISTRATOR do
+    describe 'charity administrator' do
       let(:roles) { [create(:role, name: Constants::Roles::CHARITY_ADMINISTRATOR)] }
       let(:user) { create(:user, roles: roles) }
 
@@ -14,11 +14,21 @@ describe User do
     describe 'no roles' do
       let(:user) { create(:user) }
 
-      it { should_not be_able_to(:manage, Charity.new) }
+      it { should be_able_to(:read, Charity.new) }
+      it { should_not be_able_to(:new, Charity.new) }
+      it { should_not be_able_to(:create, Charity.new) }
+      it { should_not be_able_to(:edit, Charity.new) }
+      it { should_not be_able_to(:update, Charity.new) }
+      it { should_not be_able_to(:destroy, Charity.new) }
       it { should_not be_able_to(:generate_wallet, Charity.new) }
     end
     describe 'not logged in' do
-      it { should_not be_able_to(:manage, Charity.new) }
+      it { should be_able_to(:read, Charity.new) }
+      it { should_not be_able_to(:new, Charity.new) }
+      it { should_not be_able_to(:create, Charity.new) }
+      it { should_not be_able_to(:edit, Charity.new) }
+      it { should_not be_able_to(:update, Charity.new) }
+      it { should_not be_able_to(:destroy, Charity.new) }
       it { should_not be_able_to(:generate_wallet, Charity.new) }
     end
   end
