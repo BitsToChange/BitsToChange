@@ -10,6 +10,8 @@ describe User do
 
       it { should be_able_to(:manage, Charity.new) }
       it { should be_able_to(:generate_wallet, Charity.new) }
+
+      it { should be_able_to(:manage, Campaign.new) }
     end
     describe 'no roles' do
       let(:user) { create(:user) }

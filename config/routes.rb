@@ -8,6 +8,7 @@ BitsToChange::Application.routes.draw do
   resources :users
 
   resources :charities do
+    resources :campaigns
     member do
       post :generate_wallet
       get :generate_wallet

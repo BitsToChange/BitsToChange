@@ -9,6 +9,7 @@ class Ability
 
     if user.has_role? CHARITY_ADMINISTRATOR
       can :manage, Charity
+      can :manage, Campaign
     end
   end
 end

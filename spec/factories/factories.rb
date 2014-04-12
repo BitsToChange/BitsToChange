@@ -15,6 +15,11 @@ FactoryGirl.define do
     f.name ''
   end
 
+  factory :campaign do
+    name 'Bob\'s Run for Cancer'
+    description { |c| c.name + ' is a great cause.' }
+  end
+
   factory :wallet do
   end
 

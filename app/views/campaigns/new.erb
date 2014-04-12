@@ -1,0 +1,12 @@
+<%= form_for [@charity, @campaign] do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= datetime_select('campaign', 'start_date', default: 0.seconds.from_now, ampm: true) %>
+  <%= datetime_select('campaign', 'end_date', default: 2.weeks.from_now, ampm: true) %>
+
+  <%= form.submit %>
+<% end %>
