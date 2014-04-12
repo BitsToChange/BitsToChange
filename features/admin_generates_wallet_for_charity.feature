@@ -11,20 +11,6 @@ Feature: admin generates wallet for charity
     Then that charity has a wallet
     And that wallet's public key matches what is expected by the generator
 
-  Scenario: I am logged in with a bad account type
-    Given a charity exists
-    And no wallets exist
-    And I am already logged in
-    When I try to generate a wallet for that charity
-    Then I am told I do not have permission to do that
-
-  Scenario: I am not logged in
-    Given a charity exists
-    And no wallets exist
-    And I am already logged out
-    When I try to generate a wallet for that charity
-    Then I am told I do not have permission to do that
-
   Scenario: the charity has a wallet
     Given a charity exists
     And that charity already has a wallet

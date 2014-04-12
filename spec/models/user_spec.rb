@@ -1,6 +1,27 @@
 require 'spec_helper'
 
 describe User do
+  describe 'abilities' do
+    subject(:ability) { Ability.new(user) }
+    let(:user) { nil }
+    describe Constants::Roles::CHARITY_REGISTRAR do
+      let(:roles) { [create(:role, name: Constants::Roles::CHARITY_REGISTRAR)] }
+      let(:user) { create(:user, roles: roles) }
+
+      it { should be_able_to(:manage, Charity.new) }
+      it { should be_able_to(:generate_wallet, Charity.new) }
+    end
+    describe 'no roles' do
+      let(:user) { create(:user) }
+
+      it { should_not be_able_to(:manage, Charity.new) }
+      it { should_not be_able_to(:generate_wallet, Charity.new) }
+    end
+    describe 'not logged in' do
+      it { should_not be_able_to(:manage, Charity.new) }
+      it { should_not be_able_to(:generate_wallet, Charity.new) }
+    end
+  end
   describe 'validations' do
     describe 'email' do
       it { should_not accept_values_for(:email, nil)}
