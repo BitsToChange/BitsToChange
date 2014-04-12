@@ -8,3 +8,5 @@ Feature: charity administrator creates campaign for charity
     And I am already logged in with a charity administrator account
     When I create a campaign for that charity
     Then that charity has a campaign
+    And that campaign has a wallet
+    And that campaign's wallet's public key matches what is expected by the generator

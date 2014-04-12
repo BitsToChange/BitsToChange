@@ -26,6 +26,21 @@ end
 
 And(/^that wallet's public key matches what is expected by the generator$/) do
   path = "m/0/0/#{@charity.id}"
+  verify_wallet_with_path(path)
+end
+
+def verify_wallet_with_path(path)
   master_node = MoneyTree::Node.from_serialized_address Constants::ROOT_SERIALIZED_ADDRESS
   @wallet.public_key.should == master_node.node_for_path(path).to_address
 end
+
+And(/^that campaign's wallet's public key matches what is expected by the generator$/) do
+  path = "m/1/0/#{@campaign.id}"
+  verify_wallet_with_path(path)
+end
+
+And(/^that campaign has a wallet$/) do
+  @campaign.wallets.size.should == 1
+  @wallet = @campaign.wallets.first
+end
+

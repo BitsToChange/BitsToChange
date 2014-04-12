@@ -6,6 +6,7 @@ class CampaignsController < ApplicationController
 
   def create
     @charity.campaigns << @campaign
+    @campaign.wallets << WalletGenerator.new.wallet_for_campaign(@campaign)
     redirect_to charity_campaign_path(@charity, @campaign)
   end
 

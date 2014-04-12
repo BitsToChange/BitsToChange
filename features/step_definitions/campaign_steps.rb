@@ -8,4 +8,5 @@ end
 
 Then(/^that charity has a campaign$/) do
   @charity.campaigns.size.should == 1
+  @campaign = @charity.campaigns.first
 end
