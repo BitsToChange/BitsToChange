@@ -4,8 +4,8 @@ describe User do
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }
-    describe Constants::Roles::CHARITY_REGISTRAR do
-      let(:roles) { [create(:role, name: Constants::Roles::CHARITY_REGISTRAR)] }
+    describe Constants::Roles::CHARITY_ADMINISTRATOR do
+      let(:roles) { [create(:role, name: Constants::Roles::CHARITY_ADMINISTRATOR)] }
       let(:user) { create(:user, roles: roles) }
 
       it { should be_able_to(:manage, Charity.new) }

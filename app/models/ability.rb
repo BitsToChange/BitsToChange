@@ -7,7 +7,7 @@ class Ability
 
     can :read, Charity
 
-    if user.has_role? CHARITY_REGISTRAR
+    if user.has_role? CHARITY_ADMINISTRATOR
       can :manage, Charity
     end
   end

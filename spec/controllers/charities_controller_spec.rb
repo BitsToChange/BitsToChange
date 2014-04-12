@@ -27,10 +27,10 @@ describe CharitiesController do
   end
 
   describe 'GET #new' do
-    it_has_behavior 'redirects when not logged in', route: :new, role: Constants::Roles::CHARITY_REGISTRAR
-    context 'logged in as a charity registrar' do
+    it_has_behavior 'redirects when not logged in', route: :new, role: Constants::Roles::CHARITY_ADMINISTRATOR
+    context 'logged in as a charity administrator' do
       before :each do
-        login_as Constants::Roles::CHARITY_REGISTRAR
+        login_as Constants::Roles::CHARITY_ADMINISTRATOR
       end
       it 'assigns a new charity to @charity' do
         get :new
@@ -43,10 +43,10 @@ describe CharitiesController do
     end
   end
   describe 'POST #create' do
-    it_has_behavior 'redirects when not logged in', method: :post, route: :create, params: {charity: FactoryGirl.attributes_for(:charity)}, role: Constants::Roles::CHARITY_REGISTRAR
-    context 'logged in as a charity registrar' do
+    it_has_behavior 'redirects when not logged in', method: :post, route: :create, params: {charity: FactoryGirl.attributes_for(:charity)}, role: Constants::Roles::CHARITY_ADMINISTRATOR
+    context 'logged in as a charity administrator' do
       before :each do
-        login_as Constants::Roles::CHARITY_REGISTRAR
+        login_as Constants::Roles::CHARITY_ADMINISTRATOR
       end
       context 'with valid attributes' do
         it 'creates a charity' do
@@ -75,10 +75,10 @@ describe CharitiesController do
   describe 'PUT #update' do
     # TODO: Find a way to test redirection with PUTs
     # problem is we cannot create an object when the test runs, but we need an object for redirects to happen
-    #it_has_behavior 'redirects when not logged in', method: :put, route: :update, params: {id: 0, charity: {}}, role: Constants::Roles::CHARITY_REGISTRAR
-    context 'logged in as a charity registrar' do
+    #it_has_behavior 'redirects when not logged in', method: :put, route: :update, params: {id: 0, charity: {}}, role: Constants::Roles::CHARITY_ADMINISTRATOR
+    context 'logged in as a charity administrator' do
       before :each do
-        login_as Constants::Roles::CHARITY_REGISTRAR
+        login_as Constants::Roles::CHARITY_ADMINISTRATOR
         @charity = create :charity
       end
       context 'with valid attributes' do
@@ -121,9 +121,9 @@ describe CharitiesController do
 
   describe 'DELETE #destroy' do
     # TODO: Test redirects, no good way, see PUT #update
-    context 'logged in as charity registrar' do
+    context 'logged in as charity administrator' do
       before :each do
-        login_as Constants::Roles::CHARITY_REGISTRAR
+        login_as Constants::Roles::CHARITY_ADMINISTRATOR
         @charity = create :charity
       end
       it 'deletes the charity' do
@@ -139,9 +139,9 @@ describe CharitiesController do
   end
   describe 'POST #generate_wallet' do
     # TODO: test redirects
-    context 'logged in as a charity registrar' do
+    context 'logged in as a charity administrator' do
       before :each do
-        login_as Constants::Roles::CHARITY_REGISTRAR
+        login_as Constants::Roles::CHARITY_ADMINISTRATOR
         @charity = create(:charity)
         @wallet = create(:wallet)
         @wallet_generator = double 'WalletGenerator'
