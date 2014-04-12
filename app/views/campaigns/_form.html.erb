@@ -1,0 +1,27 @@
+<%= form_for [@charity, @campaign], class: 'campaign' do |form| %>
+  <%= render partial: 'shared/errors', locals: {model: @campaign} %>
+
+  <div class="inner-form">
+    <div class="general-fields">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="goal-and-dates">
+      <%= form.label :goal %>
+      <%= form.number_field(:goal, placeholder: 'Campaign Goal (USD)') %>
+
+      <%= form.label :start_date %>
+      <% @campaign.start_date ||= 0.seconds.from_now %>
+      <%= form.datetime_local_field(:start_date) %>
+
+      <%= form.label :end_date %>
+      <% @campaign.end_date ||= 2.weeks.from_now %>
+      <%= form.datetime_local_field(:end_date) %>
+    </div>
+  </div>
+  <%= form.submit %>
+<% end %>

@@ -1,0 +1,21 @@
+section.errors {
+  h1 {
+    color: red;
+    font-size: $h1-font-size * 0.5;
+  }
+
+  @media #{$medium-up} {
+    @include grid-column(9, $center: true);
+  }
+}
+
+.field_with_errors {
+  label {
+    color: red;
+  }
+
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+    border-color: red;
+    border-color: rgba(red, 0.5);
+  }
+}

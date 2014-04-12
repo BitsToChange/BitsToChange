@@ -1,14 +1,5 @@
 <%= form_for(@charity) do |f| %>
-  <% if @charity.errors.any? %>
-    <section>
-      <h1><%= pluralize(@charity.errors.count, 'error') %> prohibited this charity from being saved:</h1>
-      <ul>
-      <% @charity.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </section>
-  <% end %>
+  <%= render partial: 'shared/errors', locals: {model: @charity} %>
 
   <fieldset>
     <div class="field">

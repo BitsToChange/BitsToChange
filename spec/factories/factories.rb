@@ -5,6 +5,10 @@ FactoryGirl.define do
     password_confirmation { |u| u.password }
   end
 
+  factory :charity_administrator, parent: :user do |f|
+    f.roles { [create(:role, name: Constants::Roles::CHARITY_ADMINISTRATOR)] }
+  end
+
   factory :charity do
     name 'Bob\'s Bait and Tackle for the homeless'
     description { |c| c.name + ' is an awesome place.' }
@@ -19,6 +23,10 @@ FactoryGirl.define do
     name 'Bob\'s Run for Cancer'
     description { |c| c.name + ' is a great cause.' }
     goal 50000
+  end
+
+  factory :invalid_campaign, parent: :campaign do |f|
+    f.name ''
   end
 
   factory :wallet do
