@@ -18,6 +18,7 @@ FactoryGirl.define do
   factory :campaign do
     name 'Bob\'s Run for Cancer'
     description { |c| c.name + ' is a great cause.' }
+    goal 50000
   end
 
   factory :wallet do

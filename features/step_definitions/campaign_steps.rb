@@ -3,6 +3,7 @@ When(/^I create a campaign for that charity$/) do
   campaign = build(:campaign)
   fill_in 'Name', :with => campaign.name
   fill_in 'Description', :with => campaign.description
+  fill_in 'Goal', :with => campaign.goal
   click_button 'Create'
 end
 
