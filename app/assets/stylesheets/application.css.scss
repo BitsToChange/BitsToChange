@@ -15,6 +15,10 @@ $body-bg: #eaebec;
 @import "campaigns";
 @import "shared";
 
+body.f-topbar-fixed {
+  padding-top: $topbar-height;
+}
+
 section#content {
   @include grid-row();
 }
