@@ -2,6 +2,8 @@
 
   @include grid-row($behavior: nest);
 
+  margin-bottom: -$padding-above-footer;
+
   > h1 {
     text-indent: -10000px;
     height: 0;

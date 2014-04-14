@@ -1,0 +1,110 @@
+<section class="about">
+  <h1>About Us</h1>
+  <div data-magellan-expedition="fixed" data-options="destination_threshold:50">
+    <dl class="sub-nav">
+      <dd data-magellan-arrival="charities"><a href="#charities">For Charities</a></dd>
+      <dd data-magellan-arrival="donors"><a href="#donors">For Donors</a></dd>
+      <dd data-magellan-arrival="team"><a href="#team">The Team</a></dd>
+    </dl>
+  </div>
+
+  <p>
+    Current online payment solutions are not as secure as we would like them to be.
+    Currencies as we know them today were never created with the security considerations of the connected world we live
+      in.
+    Bitcoin is founded on the principles of security and freedom, shaping it to be the next major technological
+      advancement since the internet and email.
+    This new digital currency aims to be the safest, fastest and cheapest way of transacting online.
+    For-profit business have begun to benefit greatly from Bitcoin, but so far there is no easy way for charities to
+      get involved.
+  </p>
+
+  <p>
+    You know that success as a charity means a low barrier to donation coupled with exposure.
+    This is the charitable dream.
+    We understand that this is no simple goal, but Bits To Change is here to help change that.
+    We provide a Bitcoin donation hub where ease of donations and exposure meet in one place.
+    Donors find the charities they already care about and new ones to support.
+    Charities additionally benefit with donations and exposure from a new demographic.
+    With this in mind we are making location and cause based searching our most prominent feature.
+    Please join us in giving the change to those that make the change.
+  </p>
+
+  <section id="charities" data-magellan-destination="charities">
+    <h1>For Charities</h1>
+
+    <h2>Your Problems:</h2>
+    <ul>
+      <li>Budgets are tight</li>
+      <li>Marketing budgets are tighter</li>
+      <li>Exposure is difficult</li>
+      <li>Bitcoin can seem daunting</li>
+    </ul>
+    <h2>How we can help:</h2>
+    <ul>
+      <li>Bitcoins are not your priority. They're ours. We manage the whole process for you.</li>
+      <li>At the end of the day you need your Bitcoins converted to Dollars, so we convert them for you.</li>
+      <li>We ask for no money up front. Ever. We simply take a small transaction fee to keep operating.</li>
+      <li>Having a page in our Bitcoin charity hub brings new exposure right to you and your cause.</li>
+      <li>You will have an entire ecosystem and organization dedicated to helping you with your cause</li>
+    </ul>
+    <p>
+      So you know that Bitcoin would be great to get involved with.
+      How do you start?
+      With Bits To Change it is always easy.
+      Simply email <a href="mailto:benjaminharrison@bitstochange.org">Benjamin</a> and we'll be in contact shortly to
+        setup your page.
+      We then make you available for Bitcoin donations on our charity hub and will send you a small graphic to proudly
+      display on your website that you are a member of the Bits To Change network.
+    </p>
+  </section>
+
+  <section id="donors" data-magellan-destination="donors">
+    <h1>For Donors</h1>
+
+    <h2>You want to:</h2>
+    <ul>
+      <li>Find the charities that matter to you</li>
+      <li>Help those causes using Bitcoin</li>
+      <li>Foster the growth of the digital currencies themselves</li>
+      <li>Donate in an easy and pain free way</li>
+      <li>Trust that you donation gets to the charity intended</li>
+    </ul>
+    <h2>With Bits To Change you can:</h2>
+    <ul>
+      <li>Search by location or cause to find charities you care about most</li>
+      <li>Help your favorite causes</li>
+      <li>Promote Bitcoin as a force for good</li>
+      <li>Donate to multiple charities through a singular transaction</li>
+      <li>Know that your donation will help those who need it</li>
+    </ul>
+    <p>
+      If you're in the know like us you have heard, read, and researched about Bitcoin.
+      You know what a force it is, you may even have a few.
+      At Bits To Change you can donate securely to charities using Bitcoins that you already have.
+      Since you understand the importance of security and privacy in the modern age you know that this the safest and
+        fastest way of donating online.
+      Bitcoin has strength in privacy and anonymity but when donating your hard earned money, we all want confirmation
+        and transparency so that we know where our coins went.
+      If you see a Bitcoin address on your favorite charities site, how can you be sure it hasn't been tweaked by a
+        hacker to go to his account instead?
+      Bits To Change is completely transparent, and constantly monitoring our public wallet addresses so that you don't
+        have to fear where your coins end up.
+      With Bits To Change, you get all the ease of donation, with none of the risk.
+      You know that when sending Bitcoins through us, they get where they need to go.
+    </p>
+
+  </section>
+
+</section>
+  <section id="team" data-magellan-destination="team">
+    <h1>The Team</h1>
+    <ul>
+      <% [
+       {full_name: 'Benjamin Harrison', title: 'President'},
+       {full_name: 'Shelby Doolittle', title: 'Lead Developer'}
+      ].each do |team_member| %>
+        <li><%= render partial: 'team_member', object: team_member %></li>
+      <% end %>
+    </ul>
+  </section>

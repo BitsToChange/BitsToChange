@@ -1,0 +1,13 @@
+<article>
+  <div class="photo">
+    <%= image_tag team_member[:full_name].sub(' ', '_').downcase + '.png', :alt => team_member[:full_name] %>
+  </div>
+  <div class="info">
+    <h1><%= team_member[:full_name] %></h1>
+    <h2><%= team_member[:title] %></h2>
+    <address>
+      <% email = team_member[:email_address] || team_member[:full_name].gsub(' ', '').downcase + '@bitstochange.org' %>
+      <a href="mailto:<%= email %>"><%= email %></a>
+    </address>
+  </div>
+</article>

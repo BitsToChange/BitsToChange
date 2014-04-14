@@ -1,8 +1,12 @@
 BitsToChange::Application.routes.draw do
   get 'changePassword', to: 'password#edit', as: 'change_password'
   put 'changePassword', to: 'password#update'
+
   get 'login' , to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  get 'about', to: 'about#index', as: 'about'
+
   root 'home#index'
 
   resources :users

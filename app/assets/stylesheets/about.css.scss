@@ -1,0 +1,64 @@
+@media #{$small-only} {
+  [data-magellan-expedition], [data-magellan-expedition-clone] {
+    display: none;
+  }
+}
+[data-magellan-expedition] {
+  @media #{$medium-up} {
+    &[style*=":"] {
+      z-index: 100;
+      background-color: transparent;
+    }
+  }
+}
+
+section.about {
+  @media #{$medium-up} {
+    @include grid-column(8, $center: true);
+  }
+
+  h2 {
+    font-size: $h3-font-size;
+  }
+}
+
+section#donors, section#charities, section#team {
+  > h1 {
+    font-size: $h2-font-size;
+  }
+}
+
+section#donors, section#charities {
+  ul {
+    @include grid-column(10, $center: true, $collapse: true);
+  }
+}
+
+section#team {
+  article {
+
+    h1 {
+      font-size: $h3-font-size;
+    }
+    h2 {
+      font-size: $h5-font-size;
+    }
+
+    @media #{$medium-up} {
+      @include grid-row($behavior: nest);
+      .photo {
+        @include grid-column(4);
+      }
+      .info {
+        @include grid-column(8);
+      }
+    }
+  }
+
+  ul {
+    @include block-grid(1);
+    @media #{$medium-up} {
+      @include block-grid(2);
+    }
+  }
+}
