@@ -30,6 +30,8 @@
       window.analytics.load("<%= ENV['SEGMENTIO_WRITE_KEY'] %>");
       window.analytics.page();
     <% end %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <header>
@@ -78,7 +80,5 @@
       <p>All Rights Reserved &copy; 2014, BitsToChange, LLC</p>
     </footer>
 
-    <%= javascript_include_tag 'vendor/modernizr' %>
-    <%= javascript_include_tag 'application' %>
   </body>
 </html>

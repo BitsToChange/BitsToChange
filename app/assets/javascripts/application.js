@@ -16,4 +16,13 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+var doFoundation = function() {
+    $(document).foundation();
+}
+
+var onPageChange = function() {
+    doFoundation();
+    analytics.page();
+}
+$(document).ready(doFoundation);
+$(document).on('page:load', onPageChange);
