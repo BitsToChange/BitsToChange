@@ -1133,6 +1133,7 @@ $body-font-family: "Ubuntu", "Helvetica", Helvetica, Arial, sans-serif;
 
 // Background color for the top bar
 // $topbar-bg-color: #333;
+$topbar-bg-color: $quartenary-color;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1145,6 +1146,7 @@ $body-font-family: "Ubuntu", "Helvetica", Helvetica, Arial, sans-serif;
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: #333;
+$topbar-dropdown-bg: $topbar-bg-color;
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-link-bg: #333;
 // $topbar-dropdown-link-weight: normal;
