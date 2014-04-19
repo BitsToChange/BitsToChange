@@ -31,9 +31,9 @@
         </li>
       </ul>
       <a ng-href="{{donate.selected.type}}:{{donate.selected.address}}">
-        <%= image_tag '{{donate.selected.type}}-qr.png', :alt => '{{donate.selected.address}}', :class => 'donate' %>
+        <%= image_tag 'bitcoin-qr.png', :alt => '{{donate.selected.address}}', :class => 'donate', :data => {:'ng-src' => '/images/{{donate.selected.type}}-qr.png'} %>
       </a>
-      <a href="{{donate.selected.type}}:{{donate.selected.address}}">{{donate.selected.address}}</a></div>
+      <a href="{{donate.selected.type}}:{{donate.selected.address}}">{{donate.selected.address}}</a>
     </aside>
   </div>
 </section>

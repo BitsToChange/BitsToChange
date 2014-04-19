@@ -32,3 +32,9 @@ $(document).on('page:load', onPageChange);
 angular.module('BitsToChange', ['ngAnimate', 'ngTouch', 'btc-home'], ['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|bitcoin|dogecoin|litecoin):/);
 }]);
+$(document).on('page:load', function() {
+    $('[ng-app]').each(function(){
+        var module = $(this).attr('ng-app')
+        angular.bootstrap(this, [module])
+    })
+});
