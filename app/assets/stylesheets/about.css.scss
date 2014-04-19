@@ -10,7 +10,27 @@
       z-index: 100;
       background-color: transparent;
     }
+    &:not([style*=":"]) {
+      .sub-nav {
+        a {
+          font-size: $base-font-size * 1.5;
+          color: $primary-color;
+          text-decoration: underline;
+        }
+      }
+    }
   }
+}
+
+.sub-nav {
+  dd.active a {
+    background-color: $quartenary-color;
+  }
+
+  dd a {
+    color: #ddd;
+  }
+
 }
 
 section.about {
