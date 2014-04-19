@@ -1,16 +1,18 @@
 <section class="home">
-  <h1>Bits to Change</h1>
-  <%= image_tag 'full-logo-large.png', :alt => 'Bits to Change', :class => 'logo' %>
-  <aside class="slogan">
-    <p>Giving the change to those who make the change.</p>
-  </aside>
-  <aside class="mailing-list">
-    <%= form_tag users_path do %>
-      <%= text_field_tag :mailing_email, nil, :placeholder => 'help-the-world@example.com', :type => 'email' %>
-      <%= button_tag 'Stay in the loop', :class => 'button postfix' %>
-    <% end %>
-    <p>Sign up to get emails about our progress</p>
-  </aside>
+  <div class="hero">
+    <h1>Bits to Change</h1>
+    <%= image_tag 'full-logo-large.png', :alt => 'Bits to Change', :class => 'logo' %>
+    <aside class="slogan">
+      <p>Giving the change to those who make the change.</p>
+    </aside>
+    <aside class="mailing-list">
+      <%= form_tag users_path do %>
+        <%= text_field_tag :mailing_email, nil, :placeholder => 'help-the-world@example.com', :type => 'email' %>
+        <%= button_tag 'Stay in the loop', :class => 'button postfix' %>
+      <% end %>
+      <p>Sign up to get emails about our progress</p>
+    </aside>
+  </div>
   <div class="goals">
     <section id="goals">
       <h1>Our Goal:</h1>
@@ -20,12 +22,18 @@
         <li>To further Bitcoins as a force for good and lead the way to safer online transactions.</li>
       </ol>
     </section>
-    <aside class="donate">
+    <aside class="donate" ng-controller="DonateCtrl as donate">
       <h1>Want to help us?</h1>
-      <a href="bitcoin:1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa">
-        <%= image_tag 'bitcoin-qr.png', :alt => '1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa', :class => 'donate' %>
+      <ul class="donate-options">
+        <li ng-repeat="option in donate.options" ng-click="donate.selected = option"
+            ng-class="{active: donate.selected == option}">
+          <%= image_tag 'bitcoin.png', :alt => 'Bitcoin', :data => {:'ng-src' => '/images/{{option.type}}.png'} %>
+        </li>
+      </ul>
+      <a ng-href="{{donate.selected.type}}:{{donate.selected.address}}">
+        <%= image_tag '{{donate.selected.type}}-qr.png', :alt => '{{donate.selected.address}}', :class => 'donate' %>
       </a>
-      <a href="bitcoin:1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa">1CTTGAxZDUuJKcxxmw58SVrgKsuatMVpWa</a>
+      <a href="{{donate.selected.type}}:{{donate.selected.address}}">{{donate.selected.address}}</a></div>
     </aside>
   </div>
 </section>

@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require angular
+//= require angular-animate
+//= require angular-touch
 //= require_tree .
 
 var doFoundation = function() {
@@ -26,3 +29,6 @@ var onPageChange = function() {
 }
 $(document).ready(doFoundation);
 $(document).on('page:load', onPageChange);
+angular.module('BitsToChange', ['ngAnimate', 'ngTouch', 'btc-home'], ['$compileProvider', function ($compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|bitcoin|dogecoin|litecoin):/);
+}]);

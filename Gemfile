@@ -65,3 +65,4 @@ gem 'cancan'
 
 gem 'money-tree'
 
+gem 'angularjs-rails'

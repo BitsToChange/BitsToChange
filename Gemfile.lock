@@ -29,6 +29,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     analytics-ruby (1.0.0)
+    angularjs-rails (1.2.16)
     arel (4.0.2)
     atomic (1.1.16)
     bcrypt (3.1.7)
@@ -191,6 +192,7 @@ PLATFORMS
 DEPENDENCIES
   accept_values_for
   analytics-ruby (~> 1.0)
+  angularjs-rails
   bcrypt (~> 3.1.7)
   cancan
   coffee-rails (~> 4.0.0)
