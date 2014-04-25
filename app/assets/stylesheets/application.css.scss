@@ -36,6 +36,11 @@ section#content {
 
   background: url('/images/white_texture.png') top left repeat;
 
+  @media #{$medium-up} {
+    -webkit-box-shadow: 10px 0px 15px -2px #BD9057, -10px 0px 15px -2px #BD9057;
+       -moz-box-shadow: 10px 0px 15px -2px #BD9057, -10px 0px 15px -2px #BD9057;
+            box-shadow: 10px 0px 15px -2px #BD9057, -10px 0px 15px -2px #BD9057;
+  }
 }
 
 footer {
