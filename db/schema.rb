@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412192117) do
+ActiveRecord::Schema.define(version: 20140507143324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20140412192117) do
     t.string   "name"
     t.text     "description"
     t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mailing_list_subscribers", force: true do |t|
+    t.string   "email"
+    t.boolean  "enabled"
+    t.string   "unsubscribe_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140412192117) do
     t.string   "walletable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "path"
   end
 
 end
