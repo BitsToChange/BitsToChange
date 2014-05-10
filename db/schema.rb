@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140507143324) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "campaigns", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -31,14 +28,6 @@ ActiveRecord::Schema.define(version: 20140507143324) do
     t.string   "name"
     t.text     "description"
     t.string   "website"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "mailing_list_subscribers", force: true do |t|
-    t.string   "email"
-    t.boolean  "enabled"
-    t.string   "unsubscribe_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
